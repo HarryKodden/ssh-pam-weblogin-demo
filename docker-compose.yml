@@ -9,12 +9,8 @@ services:
         GID: ${GID:-1000}
     container_name: sandbox
     hostname: sandbox
-    volumes:
-      - ../:/home/worker/work
-      - ~/.gitconfig:/home/worker/.gitconfig:ro
-      - ~/.ssh:/home/worker/.ssh:ro
     env_file:
-      - ../env/ldap.env
-      - ../env/pam.env
+      - ./env/ldap.env
+      - ./env/pam.env
     ports:
       - 2222:22
