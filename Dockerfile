@@ -7,7 +7,7 @@ RUN apt install -y make autoconf libpam-dev libcurl4-gnutls-dev libssl-dev pamte
 
 RUN git clone https://github.com/SURFscz/pam-weblogin /build
 
-WORKDIR build
+WORKDIR /build
 
 RUN make && make install
 
