@@ -60,6 +60,8 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 WORKDIR /home/worker/work
 
+COPY sync sync
+
 USER ${UID}
 
 ENTRYPOINT \
