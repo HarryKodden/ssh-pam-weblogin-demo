@@ -25,7 +25,7 @@ class Ldap(object):
             self.session = ldap.initialize(os.environ['LDAP_HOST'])
             self.session.simple_bind_s(
                 os.environ['LDAP_BIND_DN'],
-                os.environ['LDAP_ADMIN_PASSWORD']
+                os.environ['LDAP_PASSWORD']
             )
 
         except Exception as e:

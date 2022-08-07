@@ -4,13 +4,9 @@
 
 You can develop the module in a sandbox envrionment. This sandbox environment contains all dependencies needed for compilation and testing the module.
 
-## Prepare **env/ldap.env**
+## Prepare **.env**
 
-Copy or rename the sample env/ldap.env.sample to env/ldap.env and adjust the values as indicated
-
-## Prepare **env/pam.env**
-
-Copy or rename the sample env/pam.env.sample to env/pam.env and adjust the values as indicated
+Copy or rename the sample .env.sample to .env and adjust the values as indicated
 
 ## Start docker environment
 

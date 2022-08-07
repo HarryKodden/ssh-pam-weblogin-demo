@@ -2,15 +2,17 @@ version: "3"
 
 services:
   sandbox:
-    build:
-      context: .
-      args:
-        UID: ${UID:-1000}
-        GID: ${GID:-1000}
+    build: .
     container_name: sandbox
     hostname: sandbox
-    env_file:
-      - ./env/ldap.env
-      - ./env/pam.env
+    environment:
+      LOG_LEVEL: INFO
+      LDAP_HOST: ${LDAP_HOST:-ldaps://ldap.sram.surf.nl}
+      LDAP_BASE_DN: "dc=flat,dc=${ENTITY_ID},dc=services,dc=sram,dc=surf,dc=nl"
+      LDAP_BIND_DN: "cn=admin,dc=${ENTITY_ID},dc=services,dc=sram,dc=surf,dc=nl"
+      LDAP_PASSWORD: ${LDAP_PASSWORD}
+      URL: ${URL:-https://sram.surf.nl/pam-weblogin}
+      TOKEN: ${TOKEN}
+      ATTRIBUTE: ${USERNAME:-username}
     ports:
       - 2222:22
