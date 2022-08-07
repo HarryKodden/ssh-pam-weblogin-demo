@@ -43,14 +43,14 @@ crontab -l | { cat; echo "* * * * * "$CRONJOB; } | crontab -
 
 # Prepare WebLogin
 
-echo "auth required /lib/security/pam_weblogin.so /etc/pam-weblogin.conf" > /etc/pam.d/weblogin
+echo "auth [success=done ignore=ignore default=die] /lib/security/pam_weblogin.so /etc/pam-weblogin.conf" > /etc/pam.d/weblogin
 sed -i '2i@include weblogin' /etc/pam.d/sshd
 
 cat << EOF > /etc/pam-weblogin.conf
 url = ${URL}
 token = Bearer ${TOKEN}
 retries = ${RETRIES:-3}
-attribute=${ATTRIBUTE:-uid}
+attribute=${ATTRIBUTE:-username}
 cache_duration=${CACHE_DURATION:-60}
 EOF
 

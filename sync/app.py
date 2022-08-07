@@ -183,15 +183,15 @@ def create_user(name, attributes):
         
     pubkeys = attributes.get('attributes', {}).get('sshPublicKey', [])
 
-    execute(f"sudo useradd -m {name} --shell /bin/bash")
+    execute(f"useradd -m {name} --shell /bin/bash")
 
     if len(pubkeys) > 0:
-        execute(f"sudo su - {name} -c \"mkdir -p .ssh\"")
-        execute(f"sudo su - {name} -c \"touch .ssh/authorized_keys\"")
-        execute(f"sudo su - {name} -c \"chmod 600 .ssh/authorized_keys\"")
+        execute(f"su - {name} -c \"mkdir -p .ssh\"")
+        execute(f"su - {name} -c \"touch .ssh/authorized_keys\"")
+        execute(f"su - {name} -c \"chmod 600 .ssh/authorized_keys\"")
         
     for pk in pubkeys:
-        execute(f"sudo su - {name} -c \"echo '{pk}' >> .ssh/authorized_keys\"")
+        execute(f"su - {name} -c \"echo '{pk}' >> .ssh/authorized_keys\"")
         
 
 def sync():
