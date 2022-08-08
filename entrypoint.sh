@@ -55,7 +55,7 @@ cache_duration=${CACHE_DURATION:-60}
 EOF
 
 # Start services...
-rsylogd 
+rsyslogd 
 service cron start
 service ssh start
 
