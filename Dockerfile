@@ -23,10 +23,10 @@ RUN mkdir -p /lib/security
 
 COPY --from=builder /usr/local/lib/security/pam_weblogin.so /lib/security
 
-ADD sync/requirements.txt .
+ADD requirements.txt .
 RUN pip install -r requirements.txt && rm requirements.txt
 
-COPY ./sync/app.py /root/sync.py
+COPY ./sync.py /root/sync.py
 COPY ./entrypoint.sh /
 RUN chmod o+x /entrypoint.sh
 
