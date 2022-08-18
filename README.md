@@ -21,5 +21,3 @@ ssh -p 2222 <user>@localhost
 ```
 
 Where user is the SRAM uid of a member of a collaboration having this service linked.
-
-TO BE COMPLETED !

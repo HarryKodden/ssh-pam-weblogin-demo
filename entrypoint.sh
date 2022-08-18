@@ -54,6 +54,8 @@ attribute=${ATTRIBUTE:-username}
 cache_duration=${CACHE_DURATION:-60}
 EOF
 
+chmod 600 /root/pam-weblogin.conf
+
 # Start services...
 rsyslogd 
 service cron start
