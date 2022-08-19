@@ -1,12 +1,8 @@
 #!/bin/bash
 
-# Prepare logging
-
-sed -i '/imklog/s/^/#/' /etc/rsyslog.conf
-
 # Prepare ssh...
 
-mkdir /run/sshd
+mkdir -p /run/sshd
 
 # Make sure all existinig settings are neutralised....
 
@@ -39,7 +35,7 @@ read -r -d '' CRONJOB <<- EOM
   LOG_LEVEL=${LOG_LEVEL}
   python3 /root/sync.py >> /var/log/sync.log 2>&1
 EOM
-crontab -l | { cat; echo "* * * * * "$CRONJOB; } | crontab -
+crontab -l | { grep -v sync; echo "* * * * * "$CRONJOB; } | crontab -
 
 # Prepare WebLogin
 
@@ -57,7 +53,6 @@ EOF
 chmod 600 /root/pam-weblogin.conf
 
 # Start services...
-rsyslogd 
 service cron start
 service ssh start
 

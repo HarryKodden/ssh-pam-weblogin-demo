@@ -15,9 +15,10 @@ FROM ubuntu:latest
 
 RUN apt update
 RUN apt install -y apt-transport-https locales ca-certificates vim
-RUN apt install -y rsyslog  openssh-server pamtester libcurl4-gnutls-dev
+RUN apt install -y openssh-server pamtester libcurl4-gnutls-dev
 RUN apt install -y libsasl2-dev libldap2-dev ldap-utils 
 RUN apt install -y python3 python3-pip
+RUN apt install -y cron
 
 RUN mkdir -p /lib/security
 
