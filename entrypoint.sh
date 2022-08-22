@@ -58,4 +58,4 @@ service cron start
 service ssh start
 
 # Runtime...
-sleep infinity
+tail -F /var/log/auth.log
