@@ -53,9 +53,10 @@ EOF
 chmod 600 /root/pam-weblogin.conf
 
 # Start services...
-service syslog-ng start
-service cron start
-service ssh start
+service dbus restart
+service syslog-ng restart
+service cron restart
+service ssh restart
 
 # Runtime...
 tail -F /var/log/auth.log

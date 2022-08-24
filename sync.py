@@ -181,8 +181,6 @@ def create_user(name, attributes):
         logger.debug(f"EXEC: {command}")
         os.system(command)
         
-    pubkeys = attributes.get('attributes', {}).get('sshPublicKey', [])
-
     execute(f"useradd -m {name} --shell /bin/bash 2>/dev/null")
 
     execute(f"su - {name} -c \"mkdir -p .ssh\"")
