@@ -27,12 +27,12 @@ ssh-keygen -A
 # Prepare CRON...
 
 read -r -d '' CRONJOB <<- EOM
-  LDAP_PASSWORD=${LDAP_PASSWORD}
-  LDAP_BASE_DN=${LDAP_BASE_DN}
-  LDAP_BIND_DN=${LDAP_BIND_DN}
-  LDAP_HOST=${LDAP_HOST}
-  LDAP_MODE=${LDAP_MODE}
-  LOG_LEVEL=${LOG_LEVEL}
+  LDAP_PASSWORD="${LDAP_PASSWORD}"
+  LDAP_BASE_DN="${LDAP_BASE_DN}"
+  LDAP_BIND_DN="${LDAP_BIND_DN}"
+  LDAP_HOST="${LDAP_HOST}"
+  LDAP_MODE="${LDAP_MODE}"
+  LOG_LEVEL="${LOG_LEVEL}"
   python3 /root/sync.py >> /var/log/sync.log 2>&1
 EOM
 crontab -l | { grep -v sync; echo "* * * * * "$CRONJOB; } | crontab -
